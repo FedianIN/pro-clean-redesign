@@ -53,7 +53,7 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
 
   /* Current section in nav */
-  const links = [...document.querySelectorAll('.nav-links a')];
+  const links = [...document.querySelectorAll('.nav-links a')].filter((a) => a.getAttribute('href').startsWith('#'));
   const sections = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const navIo = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
@@ -94,6 +94,17 @@
       window.addEventListener('resize', onScroll);
       update();
     }
+  }
+
+  /* Gallery filter */
+  const chips = [...document.querySelectorAll('.chip[data-filter]')];
+  if (chips.length) {
+    const items = [...document.querySelectorAll('.g-item')];
+    chips.forEach((c) => c.addEventListener('click', () => {
+      const f = c.dataset.filter;
+      chips.forEach((x) => { const on = x === c; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+      items.forEach((it) => { it.hidden = !(f === 'all' || it.dataset.cat === f); });
+    }));
   }
 
   /* Quote form → WhatsApp */
