@@ -111,6 +111,14 @@ p { text-wrap: pretty; }
 .nav-links a { padding: var(--s-75) var(--s-100); border-radius: var(--r-full); color: var(--muted); transition: color 300ms var(--ease), background-color 300ms var(--ease); }
 .nav-links a:hover { color: var(--text); background: var(--surface-2); }
 .nav-links a.active { color: var(--text); background: var(--surface-2); }
+.lang {
+  display: inline-grid; place-items: center; min-width: 40px; height: 40px; padding: 0 var(--s-75);
+  border-radius: var(--r-full); border: 1px solid var(--line); color: var(--text);
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease);
+}
+.lang:hover { background: var(--surface-2); border-color: var(--surface-2); }
+.lang:active { transform: scale(0.98); }
+.lang-m { display: inline-flex; align-items: center; gap: var(--s-75); color: var(--muted); }
 .menu-btn { display: none; width: 40px; height: 40px; border: 0; background: transparent; border-radius: var(--r-full); cursor: pointer; position: relative; }
 .menu-btn span { position: absolute; left: 12px; width: 16px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 500ms var(--ease); }
 .menu-btn span:first-child { transform: translateY(-3px); }
@@ -285,6 +293,7 @@ p { text-wrap: pretty; }
   .heading-3 { font-size: 30px; line-height: 36px; }
   .hero-copy h1 br { display: none; }
   .nav { gap: var(--s-100); }
+  .nav .lang { display: none; }
   .cards, .reviews, .results, .benefits, .steps, .items, .row, .footer-grid { grid-template-columns: 1fr; }
   .review-wide { grid-column: auto; }
   .results { grid-template-columns: 1fr 1fr; gap: var(--s-100); }

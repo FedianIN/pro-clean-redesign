@@ -2,6 +2,21 @@
   const doc = document.documentElement;
   doc.classList.add('js');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const T = {
+    en: {
+      open: 'Open menu', close: 'Close menu',
+      missing: 'Some details are missing. Check the highlighted fields.',
+      opening: 'Opening WhatsApp with your request.',
+      hello: 'Hello Pro Clean, I would like a quote.', name: 'Name', town: 'Town', notes: 'Notes',
+    },
+    es: {
+      open: 'Abrir menú', close: 'Cerrar menú',
+      missing: 'Faltan algunos datos. Revisa los campos marcados.',
+      opening: 'Abriendo WhatsApp con tu solicitud.',
+      hello: 'Hola Pro Clean, me gustaría pedir un presupuesto.', name: 'Nombre', town: 'Localidad', notes: 'Notas',
+    },
+  };
+  const t = T[(doc.lang || 'en').slice(0, 2)] || T.en;
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
@@ -18,7 +33,7 @@
   const menu = document.getElementById('mobile-menu');
   const setMenu = (open) => {
     btn.setAttribute('aria-expanded', String(open));
-    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    btn.setAttribute('aria-label', open ? t.close : t.open);
     document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     if (open) {
@@ -112,22 +127,22 @@
       showErr(name, !name.value.trim()); if (!name.value.trim()) ok = false;
       showErr(town, !town.value); if (!town.value) ok = false;
       if (!ok) {
-        status.textContent = 'Some details are missing. Check the highlighted fields.';
+        status.textContent = t.missing;
         (form.querySelector('.invalid') || qty[0]).focus();
         return;
       }
       const lines = [
-        `Hello Pro Clean, I would like a quote.`,
+        t.hello,
         ``,
         ...chosen.map((q) => `• ${q.name}: ${q.value}`),
         ``,
-        `Name: ${name.value.trim()}`,
-        `Town: ${town.value}`,
+        `${t.name}: ${name.value.trim()}`,
+        `${t.town}: ${town.value}`,
       ];
       const notes = form.elements.notes.value.trim();
-      if (notes) lines.push(`Notes: ${notes}`);
+      if (notes) lines.push(`${t.notes}: ${notes}`);
       const url = `https://wa.me/34621383059?text=${encodeURIComponent(lines.join('\n'))}`;
-      status.textContent = 'Opening WhatsApp with your request.';
+      status.textContent = t.opening;
       window.open(url, '_blank', 'noopener');
     });
   }
