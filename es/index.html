@@ -321,34 +321,24 @@
 
 <!-- QUOTE -->
 <section class="section section-dark" id="quote">
-  <div class="container quote-grid">
+  <div class="container quote-stack">
     <div class="quote-copy reveal">
-      <p class="eyebrow caption-1">Presupuesto gratis</p>
-      <h2 class="heading-3">Dinos qué necesitas limpiar</h2>
-      <p class="body-3">Elige tus piezas y abriremos WhatsApp con tu solicitud lista para enviar. Te respondemos con el precio en cuanto terminemos el servicio en curso.</p>
+      <p class="eyebrow caption-1">Calculadora de precios</p>
+      <h2 class="heading-3">Calcula tu precio</h2>
+      <p class="body-3">Elige tus piezas y mira el precio al momento, con IVA y tu descuento. Después envíanos el presupuesto por WhatsApp con un toque.</p>
       <ul class="ticks body-5">
         <li><i class="ph ph-check-circle"></i> Sin compromiso y sin pago por adelantado</li>
-        <li><i class="ph ph-check-circle"></i> Descuentos desde 100€ aplicados automáticamente</li>
-        <li><i class="ph ph-check-circle"></i> Precios sin IVA</li>
+        <li><i class="ph ph-check-circle"></i> Descuentos del 5%, 10% y 15% aplicados automáticamente</li>
+        <li><i class="ph ph-check-circle"></i> La misma lista de precios que nuestro formulario de reserva</li>
       </ul>
       <div class="contact-lines body-5">
         <a href="https://wa.me/34621383059"><i class="ph ph-whatsapp-logo"></i> +34 621 383 059</a>
         <a href="mailto:office@pro-clean.es"><i class="ph ph-envelope-simple"></i> office@pro-clean.es</a>
       </div>
     </div>
-    <form class="quote-form reveal" id="quote-form" novalidate>
-      <fieldset>
-        <legend class="title-3">¿Qué limpiamos?</legend>
-        <div class="items">
-          <label class="item"><span class="body-5">Sofá de tela <span class="muted">plazas</span></span><input type="number" min="0" max="30" value="0" name="Sofá de tela, plazas" inputmode="numeric"></label>
-          <label class="item"><span class="body-5">Sofá de piel <span class="muted">plazas</span></span><input type="number" min="0" max="30" value="0" name="Sofá de piel, plazas" inputmode="numeric"></label>
-          <label class="item"><span class="body-5">Colchón</span><input type="number" min="0" max="30" value="0" name="Colchones" inputmode="numeric"></label>
-          <label class="item"><span class="body-5">Alfombra</span><input type="number" min="0" max="30" value="0" name="Alfombras o moquetas" inputmode="numeric"></label>
-          <label class="item"><span class="body-5">Silla</span><input type="number" min="0" max="60" value="0" name="Sillas" inputmode="numeric"></label>
-          <label class="item"><span class="body-5">Yate, armario</span><input type="number" min="0" max="10" value="0" name="Yate o armario" inputmode="numeric"></label>
-        </div>
-        <p class="field-error caption-2" id="items-error" role="alert" hidden>Añade al menos una pieza para pedir presupuesto.</p>
-      </fieldset>
+    <form class="quote-form calc-form reveal" id="quote-form" novalidate>
+      <div id="calc" class="calc"></div>
+      <div class="calc-contact">
       <div class="row">
         <label class="field">
           <span class="caption-1">Tu nombre</span>
@@ -370,6 +360,7 @@
       </label>
       <button class="btn btn-primary btn-lg btn-block button-md" type="submit"><i class="ph ph-whatsapp-logo"></i> Enviar por WhatsApp</button>
       <p class="caption-2 form-note" id="form-status" aria-live="polite">Se abrirá WhatsApp con tu mensaje. Esta web no guarda ningún dato.</p>
+      </div>
     </form>
   </div>
 </section>
@@ -451,5 +442,6 @@
 <!--/FOOTER-->
 
 <script src="../assets/app.js" defer></script>
+<script src="../assets/calc.js" defer></script>
 </body>
 </html>
